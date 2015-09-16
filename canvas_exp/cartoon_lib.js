@@ -280,34 +280,30 @@ CanvasHelper.prototype.drawBurst = function(msides, type) {
  
  // draw curves or lines 
   for (n = 1; n <= sides; n++) {
-	if (type == "burst") {
-	  cx = getx() + Math.cos(start + (step * n) - (qtrStep * 3))
-		  * (inner / Math.cos(qtrStep));
-	  cy = gety() - Math.sin(start + (step * n) - (qtrStep * 3))
-		  * (inner / Math.cos(qtrStep));
-	}
-	dx = getx() + Math.cos(start + (step * n) - halfStep) * inner;
-	dy = gety() - Math.sin(start + (step * n) - halfStep) * inner;
-	if (type == "burst") {
-	  ctx.quadraticCurveTo(cx, cy, dx, dy);
-	} else {
-	  ctx.lineTo(dx, dy);
-	}
+    if (type == "burst") {
+      cx = getx() + Math.cos(start + (step * n) - (qtrStep * 3)) * (inner / Math.cos(qtrStep));
+      cy = gety() - Math.sin(start + (step * n) - (qtrStep * 3)) * (inner / Math.cos(qtrStep));
+    }
+    dx = getx() + Math.cos(start + (step * n) - halfStep) * inner;
+    dy = gety() - Math.sin(start + (step * n) - halfStep) * inner;
+    if (type == "burst") {
+      ctx.quadraticCurveTo(cx, cy, dx, dy);
+    } else {
+      ctx.lineTo(dx, dy);
+    }
 
-	if (type == "burst") {
-	  cx = getx() + Math.cos(start + (step * n) - qtrStep)
-		  * (inner / Math.cos(qtrStep));
-	  cy = gety() - Math.sin(start + (step * n) - qtrStep)
-		  * (inner / Math.cos(qtrStep));
-	}
-	dx = getx() + Math.cos(start + (step * n)) * outer;
-	dy = gety() - Math.sin(start + (step * n)) * outer;
+    if (type == "burst") {
+      cx = getx() + Math.cos(start + (step * n) - qtrStep) * (inner / Math.cos(qtrStep));
+      cy = gety() - Math.sin(start + (step * n) - qtrStep) * (inner / Math.cos(qtrStep));
+    }
+    dx = getx() + Math.cos(start + (step * n)) * outer;
+    dy = gety() - Math.sin(start + (step * n)) * outer;
 	
-	if (type == "burst") {
-	  ctx.quadraticCurveTo(cx, cy, dx, dy);
-	} else {
-	  ctx.lineTo(dx, dy);
-	}
+    if (type == "burst") {
+      ctx.quadraticCurveTo(cx, cy, dx, dy);
+    } else {
+      ctx.lineTo(dx, dy);
+    }
   } 
   ctx.closePath(); 
   ctx.stroke();
@@ -376,49 +372,49 @@ CanvasHelper.prototype.playCartoon = function(e) {
 CanvasHelper.prototype.cartoonLoop = function() {
   var target = document.getElementById('cartoon');
   if(next > 0 && next < this.canvi.length) {
-	canvi[next].setAttribute('style', 'opacity:1;');
-	target.replaceChild(canvi[next], canvi[next-1]);
+    canvi[next].setAttribute('style', 'opacity:1;');
+    target.replaceChild(canvi[next], canvi[next-1]);
   } else if (next == 0) {
-	canvi[next].setAttribute('style', 'opacity:1;');
+    canvi[next].setAttribute('style', 'opacity:1;');
     target.appendChild(canvi[next]);
   }
   if(next > this.canvi.length) {
-	clearInterval(canvasHelper.cartoonLoop);
-	return;
+    clearInterval(canvasHelper.cartoonLoop);
+    return;
   }
   next += 1;
 };
 
 function addColorButtons(parent) {
   for(i=0;i<colors.length;++i) {
-	var tmp = document.createElement('input');
-	tmp.setAttribute('type', 'button');
-	tmp.setAttribute('value', colors[i]);
-	tmp.setAttribute('style', 'color:' + colors[i] + ';border:1px solid');
-	tmp.addEventListener('mousedown', canvasHelper.setLineColor);
-	parent.appendChild(tmp);
+    var tmp = document.createElement('input');
+    tmp.setAttribute('type', 'button');
+    tmp.setAttribute('value', colors[i]);
+    tmp.setAttribute('style', 'color:' + colors[i] + ';border:1px solid');
+    tmp.addEventListener('mousedown', canvasHelper.setLineColor);
+    parent.appendChild(tmp);
   }
 }
 
 function addLineButtons(parent) {
   for(i=0;i<lines.length;++i) {
-	var tmp = document.createElement('input');
-	tmp.setAttribute('type', 'button');
-	tmp.setAttribute('value', 'size: ' + lines[i]);
-	tmp.setAttribute('style', 'border:1px solid');
-	tmp.addEventListener('mousedown', canvasHelper.setLineSize);
-	parent.appendChild(tmp);
+    var tmp = document.createElement('input');
+    tmp.setAttribute('type', 'button');
+    tmp.setAttribute('value', 'size: ' + lines[i]);
+    tmp.setAttribute('style', 'border:1px solid');
+    tmp.addEventListener('mousedown', canvasHelper.setLineSize);
+    parent.appendChild(tmp);
   }
 }
 
 function addShapeButtons(parent) {
   for(i=0;i<shapes.length;++i) {
-	var tmp = document.createElement('input');
-	tmp.setAttribute('type', 'button');
-	tmp.setAttribute('value', shapes[i]);
-	tmp.setAttribute('style', 'border:1px solid');
-	tmp.addEventListener('mousedown', canvasHelper.setShape);
-	parent.appendChild(tmp);
+    var tmp = document.createElement('input');
+    tmp.setAttribute('type', 'button');
+    tmp.setAttribute('value', shapes[i]);
+    tmp.setAttribute('style', 'border:1px solid');
+    tmp.addEventListener('mousedown', canvasHelper.setShape);
+    parent.appendChild(tmp);
   }
 }
 
